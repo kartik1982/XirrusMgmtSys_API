@@ -105,6 +105,7 @@ module API
         when :put
           response =RestClient.put(path, load.to_json, headers)
         end
+        puts response
         response
       rescue => e
           puts  e.message
