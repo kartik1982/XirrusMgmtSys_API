@@ -5,7 +5,7 @@ require 'net/scp'
 require_relative "spec_runner.rb"
 require_relative "../api/api_client/api_client.rb"
 
-pn = Pathname.new("#{ENV['HOME']}/.xirrus-auto")
+pn = Pathname.new("xirrus-auto")
 if pn.exist?
   load "#{pn}"
 else

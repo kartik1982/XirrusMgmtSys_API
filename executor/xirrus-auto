@@ -1,0 +1,19 @@
+SYSTEM_SOFTWARE = "7.1.0 (Oct 09 2014), Build: 5138"
+CURRENT_AOS_BUILD = "XS-7.1.0-5138.bin"
+
+APE_ROOT="/home/vagrant/ape"
+DEFAULT_HOST="https://login-test01.cloud.xirrus.com"
+
+TEST_SUBNET="10.100.83.1"
+GATEWAY="10.100.83.1"
+GAP_GUESTS="ajx840@gmail.com"
+
+BROWSER_NAME="chrome"
+SAUCE_USER=""
+SAUCE_KEY=""
+DEFAULT_SPEC="api_client/smoke_spec.rb"
+RSPEC_OUT="/home/adriandlocal/Sites/Results"
+DEFAULT_USER="adinte+automation@macadamian.com"
+DEFAULT_PASSWORD="123456"
+DEFAULT_DOWNLOAD="/Users/adriandlocal/Downloads"
+REMOTE_URL="local"
