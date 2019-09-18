@@ -18,7 +18,7 @@ OptionParser.new do |opts|
   opts.on("--release_id RELEASEID"){|obj| options[:release_id]=obj}
   opts.on("--testcycle_id TESTCYCLEID"){|obj| options[:testcycle_id]=obj}
   opts.on("--spec SPEC"){|obj| options[:spec]=obj}
-  opts.on("--browser BROWSERNAME"){|obj| options[:browser]=obj}
+  opts.on("--browser_name BROWSERNAME"){|obj| options[:browser_name]=obj}
   opts.on("--ui GUIENABLED"){|obj| options[:ui]=obj}
   opts.on("--telnet TELNET"){|obj| options[:telnet]=obj}
   opts.on("--skip_api TELNET"){|obj| options[:skip_api]=obj}
@@ -29,7 +29,7 @@ settings={
   env: options[:env],
   username: options[:username],
   password: options[:password],
-  browser_name: options[:browser],
+  browser_name: options[:browser_name],
   ui: options[:ui],
   remote_srvr: options[:remote_srvr],
   remote_report: options[:remote_report],
