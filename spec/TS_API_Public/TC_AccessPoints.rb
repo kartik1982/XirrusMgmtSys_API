@@ -13,7 +13,7 @@ describe "*******TESTCASE: PUBLIC API FOR ACCESS POINTS ************" do
         ap_location = "Test03-Setup-Desk"
       end
   end
-  it "verify public API to status of all access point for tenant" do
+  it "verify public API to get status of all access point for tenant" do
     response = @papi.get_accesspoints_status
     expect(response.code).to eq(200)
   end
@@ -22,7 +22,7 @@ describe "*******TESTCASE: PUBLIC API FOR ACCESS POINTS ************" do
     response = @papi.update_accesspoint_by_serial(ap_serial, load) 
     expect(response.code).to eq(204)    
   end
-  it "verify public API to list all access for tenant" do
+  it "verify public API to list all access point for tenant" do
     response = @papi.get_accesspoints
     expect(response.code).to eq(200)
     arrays= JSON.parse(response.body)['data'] 

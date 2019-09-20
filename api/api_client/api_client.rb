@@ -4,6 +4,7 @@ require_relative "./resource/users.rb"
 require_relative "./resource/arrays.rb"
 require_relative "./resource/groups.rb"
 require_relative "./resource/profiles.rb"
+require_relative "./resource/easypass.rb"
 
 module API
     
@@ -12,6 +13,7 @@ module API
     include Arrays
     include Groups
     include Profiles
+    include Easypass
     
     attr_accessor :api_url, :username, :password, :token, :key_secret, :key_secret
     def initialize(args={})

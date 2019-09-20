@@ -5,6 +5,7 @@ require 'resource/clients'
 require 'resource/domains'
 require 'resource/groups'
 require 'resource/profiles'
+require 'resource/easypass'
 module API
   class PublicApi < API::ApiClient 
     attr_accessor :papi_url, :papi_token, :x_api_key
@@ -13,6 +14,7 @@ module API
     include Domains
     include Groups
     include Profiles
+    include Easypass
     
     def initialize(args={})
       super

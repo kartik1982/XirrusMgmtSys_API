@@ -1,15 +1,17 @@
 require_relative "local_lib/public_api_lib.rb"
 describe "*******TESTCASE: PUBLIC API FOR PROFILES ************" do
   profile_name = "Public_API_Profile"
-  ssid_name = "Public_API_SSID"
-  ap_serial = "X30744903864E"
+  ssid_name = "Public_API_SSID"  
   portal_name = "Public_API_Portal"
+  ap_serial = "X30744903864E"
   array_id= nil
 
   before :all do    
      @papi= public_api
-     profile_load = { name: profile_name, description: "Description for "+profile_name}
-     @api.post_profile(profile_load)
+     portal_load = {name: portal_name, description: "Description for "+portal_name, type: "SECRETARY"}
+     profile_load = { name: profile_name, description: "Description for "+profile_name}  
+     @api.post_add_easypass_portal(portal_load)
+     @api.post_profile(profile_load) 
   end
   it "verify public API to unassign access points from profile" do
     array_id = @papi.cust_get_accesspoint_id_by_serial(ap_serial)
