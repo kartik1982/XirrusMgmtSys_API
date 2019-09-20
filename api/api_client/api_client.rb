@@ -1,11 +1,18 @@
 require 'rest-client'
 
 require_relative "./resource/users.rb"
+require_relative "./resource/arrays.rb"
+require_relative "./resource/groups.rb"
+require_relative "./resource/profiles.rb"
 
 module API
     
   class ApiClient 
     include Users
+    include Arrays
+    include Groups
+    include Profiles
+    
     attr_accessor :api_url, :username, :password, :token, :key_secret, :key_secret
     def initialize(args={})
         @api_url = args[:host]
@@ -13,6 +20,26 @@ module API
         @password = args[:password]
         @token = get_access_token
     end 
+    
+    def api_common_params
+      args={
+          url: @api_url,    
+          resource_path: "",
+          load: {},
+          access_token: @token,     
+        }
+    end
+    
+    def get_api(resource_path)   
+      get(api_common_params.update({resource_path: resource_path, load: {}}))
+    end
+    def post_api(resource_path, load)   
+      post(api_common_params.update({resource_path: resource_path, load: load}))
+    end
+    def put_api(resource_path, load)   
+      put(api_common_params.update({resource_path: resource_path, load: load}))
+    end
+    
     def get_access_token
       api_url= @api_url
       username= @username
@@ -83,6 +110,12 @@ module API
     def put(args={})
       call(:put, args)
     end
+    def post(args={})
+      call(:post, args)
+    end
+    def delete(args={})
+      call(:delete, args)
+    end
     
     def call(_method, args={})
       ext_api = args[:ext_api] || false
@@ -104,6 +137,10 @@ module API
           response =RestClient.get(path, headers)
         when :put
           response =RestClient.put(path, load.to_json, headers)
+        when :post
+          response =RestClient.post(path, load.to_json, headers)
+        when :delete
+          response =RestClient.delete(path, headers)
         end
         puts response
         response

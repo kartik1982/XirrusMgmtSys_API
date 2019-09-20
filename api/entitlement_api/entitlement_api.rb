@@ -21,6 +21,15 @@ module API
           load: {},
           access_token: @ent_token   
         }  
-    end   
+    end 
+    def get_eapi(resource_path)   
+      get(ent_common_params.update({resource_path: resource_path, load: {}}))
+    end
+    def put_eapi(resource_path, load)         
+      put(ent_common_params.update({resource_path: resource_path, load: load}))
+    end
+    def post_eapi(resource_path, load)   
+      get(ent_common_params.update({resource_path: resource_path, load: load}))
+    end  
   end
 end

@@ -1,4 +1,4 @@
-module Users
+module Tenants
   # GET /users.json
   def get_users
     get_api("users.json")

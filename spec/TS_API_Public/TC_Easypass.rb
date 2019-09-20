@@ -1,8 +1,9 @@
 require_relative "local_lib/public_api_lib.rb"
-describe "*******TESTCASE: PUBLIC API FOR DOMAINS ************" do
-  group_name = "Public_API_Group"
-  ap_serial = "X30744903864E"
-  group=nil
+describe "*******TESTCASE: PUBLIC API FOR EASYPASS ************" do
+  guest_amba_portal = "Public_API_Eassypassoup_Guest_Amba_Portal"
+  guest_01 = {name: "papi_guest_01", email: "papi_guest_01@test.com"}
+  guest_01 = {name: "papi_guest_02", email: "papi_guest_02@test.com"}
+
   before :all do    
      @papi= public_api
      group_load = { name: group_name, description: "Description for "+group_name}

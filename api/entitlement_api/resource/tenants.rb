@@ -1,20 +1,11 @@
 module Tenants
   def get_tenant_by_erpid(erpid)
-    resource_path= "entitlements/customer.json/erpid/#{erpid}"
-    load={}
-    args = ent_common_params.update({resource_path: resource_path, load: load})   
-    get(args)
+    get_eapi("entitlements/customer.json/erpid/#{erpid}")
   end
-  def get_tenant_by_email(email)
-    resource_path= "entitlements/customer.json/email/#{email}"
-    load={}
-    args = ent_common_params.update({resource_path: resource_path, load: load})   
-    get(args)
+  def get_tenant_by_email(email_address)
+    get_eapi("entitlements/customer.json/email/#{email_address}")
   end
-  def add_tenant(tenant_load)
-    resource_path= "entitlements/customer.json/add"
-    load=tenant_load
-    args = ent_common_params.update({resource_path: resource_path, load: load})   
-    put(args)
+  def put_add_tenant(load)
+    put_eapi("entitlements/customer.json/add", load)
   end
 end

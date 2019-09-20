@@ -2,24 +2,31 @@ module AccessPoints
   #Access Points AP
   #GET /accesspoints/statuses
   def get_accesspoints_status
-    resource_path= "accesspoints.json/statuses/"
-    load={}
-    args = papi_common_params.update({resource_path: resource_path, load: load})    
-    get(args)    
+    get_papi("accesspoints.json/statuses/")  
   end
   #GET /accesspoints.json
   def get_accesspoints
-    resource_path= "accesspoints.json"
-    load={}
-    args = papi_common_params.update({resource_path: resource_path, load: load})   
-    get(args) 
+    get_papi("accesspoints.json")
   end
   #PUT /accesspoints.json/{serialNumber}
-  def update_accesspoints_location(ap_sn, ap_host, ap_location)
-    resource_path="accesspoints.json"+"/#{ap_sn}/"
-    load={ hostName: "#{ap_host}", location: "#{ap_location}" }
-    args = papi_common_params.update({resource_path: resource_path, load: load})   
-    put(args)
+  def update_accesspoint_by_serial(ap_sn, load)
+    put_papi("accesspoints.json"+"/#{ap_sn}/", load)
   end  
+  def cust_get_accesspoint_id_by_serial(serial_number)
+    response = get_accesspoints
+    if response.size > 0
+      arrays= JSON.parse(response.body)['data'] 
+      array = nil
+      arrays.each do |item|
+        if item.value?(serial_number)
+          array= item
+          break
+        end
+      end 
+      return array['id']
+    else
+      serial_number
+    end      
+  end
 end
 
